@@ -1,0 +1,116 @@
+html{
+  // filter: invert(1) hue-rotate(180deg);
+  filter: none;
+  background-color: #fff;
+  height: 100%
+}
+
+body{
+  height: 100%;
+}
+
+.fire-canvas{
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.sidebar-links{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.sidebar-links .active{
+  background-color: $sidebarActiveBg;
+  color: #fff !important;
+  transition: all .3s;
+  margin-top: 20px;
+}
+
+.sidebar-links .active + ul{
+  background-color: $sidebarActiveBg;
+  transition: all .3s;
+    margin-bottom: 20px;
+
+  a{
+     color: #fff !important; 
+       transition: all .3s;
+  }
+}
+
+#lightBtn{
+  position: fixed;
+  z-index 999;
+  right: 30px;
+  bottom: 80px;
+  width: 50px;
+  height: 50px
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  font-size: 16px;
+  cursor pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+   -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: 100%;
+}
+
+/* mini滚动条 */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+.sidebar::-webkit-scrollbar-button{
+  display: none;
+}
+.sidebar::-webkit-scrollbar-track{
+  background:#fff;
+}
+.sidebar::-webkit-scrollbar-track-piece{
+  background: #fff;
+  /* box-shadow: inset 1px 1px 5px #ddd; */
+}
+.sidebar::-webkit-scrollbar-thumb{
+  background:#ddd;
+  border: solid 2px #fff;
+  /* border-image: linear-gradient(90deg, #ddd,#fff) 20; */
+  border-radius: 10px;
+}
+.sidebar::-webkit-scrollbar-corner{
+  background:#fff;
+}
+.sidebar::-webkit-scrollbar-resizer{
+  background:#fff;
+}
+
+/* mini滚动条 */
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+body::-webkit-scrollbar-button{
+  display: none;
+}
+body::-webkit-scrollbar-track{
+  background:#fff;
+}
+body::-webkit-scrollbar-track-piece{
+  background: #fff;
+  /* box-shadow: inset 1px 1px 5px #ddd; */
+}
+body::-webkit-scrollbar-thumb{
+  background:#333;
+  border: solid 2px #fff;
+  /* border-image: linear-gradient(90deg, #ddd,#fff) 20; */
+  border-radius: 10px;
+}
+body::-webkit-scrollbar-corner{
+  background:#fff;
+}
+body::-webkit-scrollbar-resizer{
+  background:#fff;
+}
