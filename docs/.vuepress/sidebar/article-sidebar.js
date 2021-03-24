@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-17 21:21:59
- * @LastEditTime: 2021-03-20 01:49:04
+ * @LastEditTime: 2021-03-25 00:22:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /alan-blog/docs/.vuepress/sidebar/article-sidebar.js
@@ -44,6 +44,8 @@ const articleSidebar = {
         '/article/js/27-deep-clone',
         '/article/js/28-for-in-for-of',
         '/article/js/29-map-set',
+        '/article/js/30-debounce-throttle',
+        '/article/js/31-error-types',
       ],
     },
     {
@@ -74,6 +76,7 @@ const articleSidebar = {
         '/article/browser/02-browser-cache',
         '/article/browser/03-chrome-animation',
         '/article/browser/04-notifications-api',
+        '/article/browser/05-localStorage',
       ],
     },
     {

@@ -5,16 +5,19 @@ sidebarDepth: 2
 
 ## promise背景与作用
 
-* 回调函数层层嵌套，容易造成回调地狱难以阅读
-* 将异步操作以同步的流程优雅表达出来，避免层层嵌套
+* 在过去，回调函数层层嵌套，造成回调地狱，使代码难以阅读
+* promise 就是将异步操作以同步流程优雅表达出来，避免了层层嵌套
 
-## promise对象的三个状态
+## Promise 构造函数
+接收一个同步回调方法，作为参数
+
+## promise 实例的三个状态
 
 1. pending：初始化状态......new Promise时触发
 2. fulfilled：成功状态......resolve()时触发
 3. rejected：失败状态......reject()时触发
 
-！必须注意：promise对象在pending时就**已经执行了当中的同步代码**：如事件绑定、定时器开启
+！必须注意：promise实例在实例化时就**已经执行了当中的同步代码**：如事件绑定、定时器开启、发送请求
 * * *
 
 ## 实例方法
@@ -30,15 +33,15 @@ then方法可接受两个分别对应 fulfilled 和 rejected状态的回调函�
 ## 静态方法
 ### Promise.all()
 `Promise.all([p1,p2]).then(([r1,r2])=>{});`
-当p1,p2的状态都为resolve才执行then回调。
-
-### Promise.race()
-`Promise.race([p1,p2]).then((res)=>{});`
-p1,p2其中一个状态到达fulfilled，执行then回调。
+当p1,p2的状态都为resolve才执行then回调。当有一个状态为 reject 则执行catch 回调。
 
 ### Promise.allSettled()
 `Promise.allSettled([p1,p2]).then((result)=>{});`
-p1,p2都具有状态时，(无论是fulfilled还是reject)，执行then回调。
+p1,p2都具有状态时，(无论是fulfilled还是reject)，执行then回调。catch 回调不执行。
+
+### Promise.race()
+`Promise.race([p1,p2]).then((res)=>{});`
+p1,p2 以第一个到达 settled 状态的 promise 为基准，具体状态是 fulfilled 则调用成功回调，是 rejected 就调用失败回调。后面的 promise 无论其状态如何都不会触发回调。
 
 ### Promise.any()
 `Promise.any(promises).then(
@@ -49,19 +52,19 @@ p1,p2都具有状态时，(无论是fulfilled还是reject)，执行then回调。
     // All of the promises were rejected.
   }
 );`
-当promises中有一个状态fulfilled执行第一个回调，当所有状态都rejected了执行第二个回调。
-any跟race有点像，就是不会因为某个promise变成rejected状态而结束。
+
+p1，p2中，有一个 promise 到达 fulfilled 状态就会触发成功回调，仅当所有的 promise 都到达 rejected 时才会触发错误回调。
+
 ### Promise.resolve() 重点
 `Promise.resolve('foo')`
 **等价于**
 `new Promise(resolve=> resolve('foo'))`
 
-该方法接收不同参数时，返回有所不同
+接收不同参数时，返回有所不同
 
 1. 参数是一个Promise实例，返回该实例。
-2. 参数是一个thenable对象，将对象转为promise实例并返回。 
-3. 参数是个普通值，返回一个新的promise对象，状态为resolved。
-4. 不传任何参数，返回一个新的promise对象，状态为resolved。
+2. 不传参或传个普通值，返回一个状态为 fulfilled 的promise实例。
+4. 参数是一个 thenable 对象，将对象转为 promise实例并返回。 （罕见）
 
 注意：promise.resolve().then()属于微任务。
 ```javascript
@@ -88,7 +91,7 @@ p.then(function (s) {
 ```
 
 ### Promise.reject()
-返回一个新的Promise实例，该实例的状态为rejected。
+返回一个状态为 rejected 的 Promise 实例。
 
 * * *
 
@@ -121,7 +124,7 @@ function AJAX(url) {
             }
         };
     });
-    // 返回一个promise对象
+    // 返回一个promise实例
     return promise;
 }
 
@@ -130,7 +133,7 @@ window.onload = () => {
         .then((data) => {
             console.log("第一次执行成功");
             console.log(JSON.parse(data));
-            // 再返回一个promise对象 可以列式调用
+            // 再返回一个promise实例 可以列式调用
             return AJAX("http://jsonplaceholdsts");
         })
         .then((data) => {
@@ -145,7 +148,7 @@ window.onload = () => {
 ```
 
 ### 例二：链式调用
-只要在then的回调方法中**return promise对象**，就能链式使用then
+只要在then的回调方法中**return promise实例**，就能链式使用then
 ```javascript
 const promise = new Promise((resolve) => {
     resolve("hello");
@@ -168,7 +171,7 @@ promise
 ## promise进阶
 ### 例一：执行异步任务队列
 ```javascript
-// 初始化队列，队列元素是返回promise对象的函数
+// 初始化队列，队列元素是返回promise实例的函数
 let tasks = [];
 function addAsyncTask(j) {
     const task = function () {
@@ -221,7 +224,7 @@ startQueue()
 
 
 
-### 例二：使用reduce简化队列执行
+### 例二：使用 reduce 更简洁地进行队列的执行
 ```javascript
 function t1() {
     return new Promise((resolve, reject) => {
@@ -258,6 +261,38 @@ tasks.reduce((chain, task) => {
 
 
 ### 例三：实现经典0->1->2->3->4->5
+```js
+// 定义队列
+const tasks = (function () {
+  return Array.from({ length: 6 }).map((item, index) => {
+    return function () {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(index)
+        }, 1000)
+      })
+    }
+  })
+})()
+
+// 执行队列
+tasks.reduce((chain, task) => {
+  return chain
+    .then(() => task())
+    .then((res) => {
+      console.log(res)
+    })
+}, Promise.resolve())
+```
+
+### 例四：根据例三改一下
+输出： 0->1->2->3->stop at 4
+
+**为什么会 stop at 4 ？**
+* 因为到i===4时，reject 导致返回的promise实例变为了 rejected状态，
+* 所以他不继续执行当前轮的第二个 then 回调（即，不会输出 4），
+* 也无法在下一轮中执行第一个then回调（即，无法返回最后一个任务的promise实例）
+
 ```javascript
 let tasks = [];
 for (let i = 0; i <= 5; i++) {
