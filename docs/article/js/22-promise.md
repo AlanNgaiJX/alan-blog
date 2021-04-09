@@ -22,22 +22,77 @@ sidebarDepth: 2
 
 ## 实例方法
 ### Promise.prototype.then(?cb1,?cb2)
-then方法可接受两个分别对应 fulfilled 和 rejected状态的回调函的，回调函数分别接收resolve和reject的传参。
+then 方法可接受两个分别对应 fulfilled 和 rejected 状态的回调函的。若 then 接收函数以外的值作为参数，则忽略这个 then。
+
+注意：promise的失败具有传递性。then的失败回调会捕获到链上的报错。
+```js
+p1
+  .then(step1)
+  .then(step2)
+  .then(step3)
+  .then(
+    console.log,
+    console.error
+  );
+```
+p1后面有四个then，意味依次有四个回调函数。只要前一步的状态变为fulfilled，就会依次执行紧跟在后面的回调函数。
+最后一个then方法，回调函数是console.log和console.error，console.log只显示step3的返回值，而console.error可以显示p1、step1、step2、step3之中任意一个发生的错误。
+
+#### then 中两个回调函数的参数
+fulfilled 回调中，参数可以是resolve的传参，也可以是上一个then的返回值。
+rejected 回调中，参数可以是reject的传参，也可以上之前then链上发生的错误。
+
+观察这个案例：
+```js
+let func = function() {
+    return new Promise((resolve, reject) => {
+        resolve('返回值');
+    });
+};
+
+let cb = function() {
+    return '新的值';
+}
+
+func().then(function () {
+    return cb();
+}).then(resp => {
+    console.warn(resp);//"新的值"
+    console.warn('1 =========<');
+});
+
+func().then(function () {
+    cb();
+}).then(resp => {
+    console.warn(resp);//因为上一个回调没有return值，所以是 "undefined"
+    console.warn('2 =========<');
+});
+
+func().then(cb()).then(resp => {
+    console.warn(resp);// 因为上一个then中的参数是字符串不是函数，忽略上一个then，关注前一个then，"返回值"
+    console.warn('3 =========<');
+});
+
+func().then(cb).then(resp => {
+    console.warn(resp);// "新的值"
+    console.warn('4 =========<');
+});
+```
 
 ### Promise.prototype.catch()
-捕获串行链发生的 异常 或 reject
+捕获 promise 实例发生的 异常 或 reject
 
 ### Promise.prototype.finally()
-无论最后是fulfilled 还是rejected 都会执行finally的回调
+无论最后是 fulfilled 还是rejected 都会执行 finally 的回调
 
 ## 静态方法
 ### Promise.all()
 `Promise.all([p1,p2]).then(([r1,r2])=>{});`
-当p1,p2的状态都为resolve才执行then回调。当有一个状态为 reject 则执行catch 回调。
+当p1,p2的状态都为 fulfilled 才执行成功回调。当有一个状态为 rejected 则执行失败回调。
 
 ### Promise.allSettled()
 `Promise.allSettled([p1,p2]).then((result)=>{});`
-p1,p2都具有状态时，(无论是fulfilled还是reject)，执行then回调。catch 回调不执行。
+p1,p2都具有状态时，(无论是fulfilled 还是 rejected)，都执行成功回调。
 
 ### Promise.race()
 `Promise.race([p1,p2]).then((res)=>{});`
@@ -94,6 +149,56 @@ p.then(function (s) {
 返回一个状态为 rejected 的 Promise 实例。
 
 * * *
+
+### 任务队列类型
+* 事件队列中的任务划分有 Macrotasks宏任务 和 Microtasks微任务 两种
+* 在每一次事件循环中宏任务只会提取一个执行，而微任务会一直提取，直到微任务队列为空为止
+
+**使用宏任务的API有：**
+* setTimeout
+* setInterval
+* setImmediate
+* I/0
+* UI rendering
+
+**使用微任务的API有：**
+* process.nextTick
+* Promise
+* MutationObserver
+
+**promise的微任务队列**
+promise的 then链 就是一个个微任务。
+当 promise 实例到达 fulfilled 状态时，then中的任务会添加到微任务队列中，等待执行。
+intaglio
+
+观察并分析输出：
+```js
+async function async1() {
+  console.log('async1 start')//2
+  await async2()
+  console.log('async1 end')// 6
+}
+
+async function async2() {
+  console.log('async2')// 3
+}
+
+console.log('script start'); // 1 
+
+setTimeout(() => {
+  console.log('setTimeOut')// 8
+}, 0)
+
+async1();
+
+new Promise((resolve)=>{
+  console.log("promise1");// 4
+  resolve();
+}).then(function(){
+  console.log("promise2");//7
+})
+console.log("script end"); // 5
+```
 
 ## promise基础使用
 ### 例一：封装AJAX
@@ -323,3 +428,5 @@ p.then(()=>{
     console.log("stop at "+err);
 })
 ```
+
+### 手写 promise

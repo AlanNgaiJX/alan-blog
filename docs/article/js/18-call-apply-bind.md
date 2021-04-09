@@ -11,6 +11,8 @@ sidebarDepth: 2
 * apply用数组传参fn.apply(context,args)
 * call需要一个个传入参数fun.call(context,arg1,arg2,arg3)
 
+注意：不管我们给函数 bind 几次，fn 中的 this 永远由第一次 bind 决定
+
 ## 经典使用场景
 高阶函数中干预this的指向
 

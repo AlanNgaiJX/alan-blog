@@ -63,12 +63,16 @@ sidebarDepth: 2
 
 ##### 参考：
 [深入理解浏览器的缓存机制](https://www.jianshu.com/p/54cc04190252)
+
 [浏览器缓存机制详解](https://blog.csdn.net/hhthwx/article/details/80152728)
 
 
 
 ##### 扩展阅读：
 [Service Worker API _ MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API)
+
 [Service Worker 应用详解——志文工作室](https://lzw.me/a/pwa-service-worker.html)
+
 [什么是CDN](https://www.zhihu.com/question/36514327?rf=37353035)
+
 [关于CDN](https://www.zhihu.com/question/36514327?rf=37353035)

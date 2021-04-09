@@ -40,6 +40,16 @@ fun().then(res=>{
     console.log(res);//12
 })
 ```
+```js
+async function getData() {
+  const res =  await Promise.resolve("I made it!");
+  console.log(res);//2 I made it
+  return res;
+}
+
+const data = getData();
+console.log(data);//1 Promise<pendding>
+```
 * async函数调用即执行，不需要像Generator一样调用next方法才继续执行。
 * 从语法的角度比较，async取代了Generator的星号，await取代了Generator的yield，语义更好。
 * async函数返回Promise对象，return语句返回的值，成为下一次调用then方法回调函数的参数。
