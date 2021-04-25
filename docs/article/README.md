@@ -2,6 +2,6 @@
 title: 总览
 sidebarDepth: 2
 ---
-<!-- <ClientOnly> -->
+<ClientOnly>
 <count-article />
-<!-- </ClientOnly> -->
+</ClientOnly>

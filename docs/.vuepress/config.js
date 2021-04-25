@@ -3,7 +3,8 @@ const path = require('path');
 
 module.exports = {
   head: [['link', { rel: 'icon', href: `/favicon.ico` }]],
-  base: '/blog/',
+  // base: '/blog/',// 部署在 github.io 时
+  base: '/alan-blog/',// 部署在 alanngai.xyz 时
   title: "Alan's blog",
   description: "Alan Ngai's blog",
   configureWebpack: {
