@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-17 15:34:55
- * @LastEditTime: 2021-03-21 13:32:42
+ * @LastEditTime: 2021-04-25 22:01:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /alan-blog/docs/.vuepress/components/home.vue
@@ -37,6 +37,11 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="footer">
+      <a href="https://beian.miit.gov.cn" target="_blank"
+        >粤ICP备2021041982号</a
+      >
     </div>
   </div>
 </template>
@@ -243,6 +248,18 @@ export default {
           }
         }
       }
+    }
+  }
+
+  .footer{
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    margin-top: 50px;
+
+    a{
+      color: #000;
+      text-decoration: none;
     }
   }
 }
