@@ -38,11 +38,26 @@
         </div>
       </div>
     </div>
-    <div class="footer">
+
+    <!-- 备案号分环境显示 -->
+
+    <!-- https://alanngaijx.github.io/ 无需显示备案号 -->
+    <!-- ... -->
+
+    <!-- https://alanngaijx.xyz/ 或 https://www.alanngaijx.xyz 显示备案号 -->
+    <div class="footer" v-if="host.includes('alanngaijx.xyz')">
       <a href="https://beian.miit.gov.cn" target="_blank"
         >粤ICP备2021041982号</a
       >
     </div>
+    
+    <!-- https://alanngai1996.xyz 显示备案号 -->
+    <div class="footer" v-if="host.includes('alanngai1996.xyz')">
+      <a href="https://beian.miit.gov.cn" target="_blank"
+        >粤ICP备2021041982号-2</a
+      >
+    </div>
+
   </div>
 </template>
 
@@ -61,6 +76,7 @@ export default {
       showFireCanvas: false,
       contentWrap: null,
       menuList: null,
+      host:"",
     }
   },
   methods: {
@@ -75,6 +91,7 @@ export default {
     setTimeout(() => {
       this.showFireCanvas = true
     }, 200)
+    this.host = window.location.host
   },
   beforeDestroy() {
     this.$root.$el.setAttribute('data-currPage', 'not-home')
