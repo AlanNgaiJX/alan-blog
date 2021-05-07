@@ -139,8 +139,9 @@ const articleSidebar = {
       icon: 'Arithmetic',
       initialOpenGroupIndex: -1,
       children: [
-        '/article/arithmetic/1-sort',
-        '/article/arithmetic/2-traverse',
+        '/article/arithmetic/01-basic',
+        '/article/arithmetic/02-sort',
+        '/article/arithmetic/03-traverse',
       ],
     },
     {
