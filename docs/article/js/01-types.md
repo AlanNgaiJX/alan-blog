@@ -102,6 +102,8 @@ typeof function a(){} //function
 new Object() instance of Object //true
 new Array() instance of Array //true
 new RegExp() instance of RegExp //true
+
+// * A instance of B：A是B类型的实例（有道翻译）
 ```
 
 附上：准确的类型检测
@@ -120,6 +122,7 @@ typeof true === "boolean"; // true
 
 // 判断undefined
 typeof undefined === "undefined"; // true
+undefined === undefined;// true
 
 // 判断null
 Object.prototype.toString.call(null); // "[object Null]"
