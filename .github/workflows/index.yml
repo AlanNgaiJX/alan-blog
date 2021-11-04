@@ -17,11 +17,7 @@ jobs:
         uses: actions/setup-node@master
       - run: npm install
       - run: npm run build
-      - run: tree
-      - run: cd ./docs/.vuepress/
-      - run: pwd
-      - run: ls
-      - run: tar -zcvf release.tgz ./dist
+      - run: tar -zcvf release.tgz ./docs/.vuepress/dist
 
       # 发布 Release
       - name: Create Release
