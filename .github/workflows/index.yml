@@ -18,6 +18,7 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: cd ./docs/.vuepress/
+      - run: ls
       - run: tar -zcvf release.tgz dist
 
       # 发布 Release
