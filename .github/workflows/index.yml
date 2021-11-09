@@ -12,43 +12,47 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      # 打包构建
-      - name: Build
+      - name: Test
         uses: actions/setup-node@master
-      - run: npm install
-      - run: npm run build
-      - run: cd ./docs/.vuepress/dist && tar -zcvf release.tgz *
+        run: cd ./docs/.vuepress/styles && pwd && ls && tar -zcvf release.tgz * && ls
 
-      # 发布 Release
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.HUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
+      # 打包构建
+      # - name: Build
+      #   uses: actions/setup-node@master
+      # - run: npm install
+      # - run: npm run build
+      # - run: cd ./docs/.vuepress/dist && tar -zcvf release.tgz *
 
-      # 上传构建结果到 Release
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.HUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./release.tgz
-          asset_name: release.tgz
-          asset_content_type: application/x-tgz
+      # # 发布 Release
+      # - name: Create Release
+      #   id: create_release
+      #   uses: actions/create-release@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.HUB_TOKEN }}
+      #   with:
+      #     tag_name: ${{ github.ref }}
+      #     release_name: Release ${{ github.ref }}
+      #     draft: false
+      #     prerelease: false
 
-      # 部署到服务器
-      - name: executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.PRIVATE_KEY }}
-          port: ${{ secrets.PORT }}
-          script: pwd
+      # # 上传构建结果到 Release
+      # - name: Upload Release Asset
+      #   id: upload-release-asset
+      #   uses: actions/upload-release-asset@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.HUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
+      #     asset_path: ./release.tgz
+      #     asset_name: release.tgz
+      #     asset_content_type: application/x-tgz
+
+      # # 部署到服务器
+      # - name: executing remote ssh commands using ssh key
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     key: ${{ secrets.PRIVATE_KEY }}
+      #     port: ${{ secrets.PORT }}
+      #     script: pwd
