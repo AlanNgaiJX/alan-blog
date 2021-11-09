@@ -1,11 +1,16 @@
 name: Publish And Deploy
 on:
-  push:
-    branches:
-      - master
   # push:
-  #   tags:
-  #     - "v*"
+  #   branches:
+  #     - master
+
+  # git add .
+  # git commit -m "xxx"
+  # git tag v0.1.0
+  # git push origin v0.1.0
+  push:
+    tags:
+      - "v*"
 
 jobs:
   build-and-deploy:
@@ -15,16 +20,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Test
-        uses: actions/setup-node@master
-      - run: cd ./docs/.vuepress/styles && pwd && ls && tar -zcvf release.tgz * && ls
-
       # 打包构建
-      # - name: Build
-      #   uses: actions/setup-node@master
-      # - run: npm install
-      # - run: npm run build
-      # - run: cd ./docs/.vuepress/dist && tar -zcvf release.tgz *
+      - name: Build
+        uses: actions/setup-node@master
+      - run: npm install
+      - run: npm run build
+      - run: cd ./docs/.vuepress/dist && tar -zcvf release.tgz *
 
       # # 发布 Release
       - name: Create Release
@@ -46,7 +47,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.HUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./docs/.vuepress/styles/release.tgz
+          asset_path: ./docs/.vuepress/dist/release.tgz
           asset_name: release.tgz
           asset_content_type: application/x-tgz
 
@@ -58,4 +59,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
-          script: ls
+          script: |
+            cd /usr/local/nginx/data/www/alan-blog
+            wget https://github.com/AlanNgaiJX/alan-blog/releases/latest/download/release.tgz -O release.tgz
+            tar zxvf release.tgz
