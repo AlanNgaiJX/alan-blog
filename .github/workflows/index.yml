@@ -51,11 +51,11 @@ jobs:
           asset_content_type: application/x-tgz
 
       # # 部署到服务器
-      # - name: executing remote ssh commands using ssh key
-      #   uses: appleboy/ssh-action@master
-      #   with:
-      #     host: ${{ secrets.HOST }}
-      #     username: ${{ secrets.USERNAME }}
-      #     key: ${{ secrets.PRIVATE_KEY }}
-      #     port: ${{ secrets.PORT }}
-      #     script: pwd
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: pwd
