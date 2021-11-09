@@ -1,8 +1,11 @@
 name: Publish And Deploy
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - master
+  # push:
+  #   tags:
+  #     - "v*"
 
 jobs:
   build-and-deploy:
@@ -14,7 +17,7 @@ jobs:
 
       - name: Test
         uses: actions/setup-node@master
-        run: cd ./docs/.vuepress/styles && pwd && ls && tar -zcvf release.tgz * && ls
+      - run: cd ./docs/.vuepress/styles && pwd && ls && tar -zcvf release.tgz * && ls
 
       # 打包构建
       # - name: Build
