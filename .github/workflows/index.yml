@@ -3,11 +3,16 @@ on:
   # push:
   #   branches:
   #     - master
-
+  
+  # 发布并部署版本到服务器
   # git add .
   # git commit -m "xxx"
   # git tag v0.1.0
   # git push origin v0.1.0
+
+  # 如果非发布版本时 不能 push 尝试
+  # git pull --rebase origin master
+  # git push -u origin master
   push:
     tags:
       - "v*"
