@@ -13,6 +13,9 @@ on:
   # 如果非发布版本时 不能 push 尝试
   # git pull --rebase origin master
   # git push -u origin master
+
+  # 如果 出现 error: src refspec refs/heads/master matches more than one 不能push
+  # 尝试 git tag 查看本地标签，或远程仓库上查看tags，git tag -d refs/heads/master 删除多余标签
   push:
     tags:
       - "v*"
