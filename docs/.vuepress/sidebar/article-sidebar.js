@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-03-17 21:21:59
- * @LastEditTime: 2021-03-25 00:22:47
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /alan-blog/docs/.vuepress/sidebar/article-sidebar.js
- */
 const articleSidebar = {
   path: '/article/',
   list: [
