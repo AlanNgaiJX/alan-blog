@@ -21,7 +21,7 @@ on:
       - "v*"
 
 jobs:
-  build-and-deploy:
+  build-and-release:
     runs-on: ubuntu-latest
     steps:
       # 下载源码
@@ -59,6 +59,10 @@ jobs:
           asset_name: release.tgz
           asset_content_type: application/x-tgz
 
+  deploy:
+    needs: build-and-release
+    runs-on: ubuntu-latest
+    steps:
       # # 部署到服务器
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
@@ -69,5 +73,5 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /usr/local/nginx/data/www/alan-blog
-            wget https://github.com/AlanNgaiJX/alan-blog/releases/latest/download/release.tgz -O release.tgz
+            wget https://github.com/AlanNgaiJX/alan-blog/releases/latest/download/release.tgz -O release.tgz 
             tar zxvf release.tgz
