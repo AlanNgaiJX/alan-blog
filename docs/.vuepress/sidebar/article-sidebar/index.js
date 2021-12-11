@@ -6,6 +6,7 @@ const sidebar_vue = require('./vue.js');
 const sidebar_node = require('./node.js');
 const sidebar_arithmetic = require('./arithmetic.js');
 const sidebar_other = require('./other.js');
+const sidebar_mussy = require('./mussy.js');
 
 const articleSidebar = {
   path: '/article/',
@@ -18,7 +19,8 @@ const articleSidebar = {
     sidebar_vue,// vue
     sidebar_node,// node
     sidebar_arithmetic,// 算法
-    sidebar_other// 其他
+    sidebar_other,// 其他
+    sidebar_mussy,// 杂记未整理的
   ],
 };
 
