@@ -32,6 +32,8 @@ jobs:
       # 打包构建
       - name: Build
         uses: actions/setup-node@master
+        with:
+          node-version: 14
       - run: npm install
       - run: npm run build
       - run: cd ./docs/.vuepress/dist && tar -zcvf release.tgz *
