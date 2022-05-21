@@ -67,9 +67,9 @@ console.log(Object.getPrototypeOf(p));// Person
 * 实例对象的__proto__属性（即隐式原型）：创建实例对象时自动添加的，如，同样指向构造函数所指向的原型对象
 
 （例一）
-<img src="~@blogImages/a1.jpeg" width="400" style="display: block;"/>
+<img src="./assets/a1.jpeg" width="400" style="display: block;"/>
 <img src="~@blogImages/a2.jpeg" width="300" style="display: block;"/>
-
+测试
 * * *
 
 ### 隐式原型链
