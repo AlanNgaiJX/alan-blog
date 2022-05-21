@@ -38,7 +38,7 @@ sidebarDepth: 2
 
 #### 流程图
 
-<img src="~@blogImages/k1.jpeg" width="600" style="display: block;"/>
+<img src="./assets/k1.jpeg" width="600" style="display: block;"/>
 <br/>
 
 #### 流程解释
@@ -79,7 +79,7 @@ sidebarDepth: 2
     * CLOSED：（服务器，客户端）连接关闭
 
 #### 流程图
-<img src="~@blogImages/k2.jpeg" width="650" style="display: block;"/>
+<img src="./assets/k2.jpeg" width="650" style="display: block;"/>
 <br/>
 
 #### 流程解释

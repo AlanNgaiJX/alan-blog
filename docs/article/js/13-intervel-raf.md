@@ -19,7 +19,7 @@ sidebarDepth: 2
 
 当使用setInterval()时，JS引擎会判断事件队列中是否还有该定时器的回调，若无，才将定时器回调压入事件队列，若有，则这个间隔不向事件队列压入回调。
 
-<img src="~@blogImages/i1.jpeg" width="600" style="display: block;"/>
+<img src="./assets/i1.jpeg" width="600" style="display: block;"/>
 <br/>
 
 假设，某个onclick事件处理程序使用setInterval()设置了200ms间隔的定时器。如果事件处理程序花了300ms多一点时间完成，同时定时器代码也花了差不多的时间，就会同时出现跳过某间隔的情况。

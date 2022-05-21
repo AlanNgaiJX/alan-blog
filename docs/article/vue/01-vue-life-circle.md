@@ -3,7 +3,7 @@ title: vue生命周期详解
 sidebarDepth: 2
 ---
 ## 生命周期图注解
-<img src="~@blogImages/g1.jpeg" width="550" style="display: block;"/>
+<img src="./assets/g1.jpeg" width="550" style="display: block;"/>
 
 ## 初始化阶段
 
@@ -40,7 +40,7 @@ this.$el.parentNode.removeChild(this.$el);
 * * *
 ## 关于父子组件的生命周期关系
 <br/>
-<img src="~@blogImages/g2.jpeg" width="300" style="display: block;"/>
+<img src="./assets/g2.jpeg" width="300" style="display: block;"/>
 <br/>
 
 

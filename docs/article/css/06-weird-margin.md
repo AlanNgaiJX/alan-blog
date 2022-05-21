@@ -22,7 +22,7 @@ sidebarDepth: 2
 }
 ```
 会表现为
-<img src="~@blogImages/b1.jpeg" width="500px">
+<img src="./assets/b1.jpeg" width="500px">
 黄色区域就是被撑开的50px，同理margin-bottom也会造成底部也撑开了50px;
 
 ## 解决方案

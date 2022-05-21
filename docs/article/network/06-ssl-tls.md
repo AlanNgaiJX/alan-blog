@@ -39,7 +39,7 @@ HTTP协议通信，所有信息都是明文传输的，是不安全的。SSL/TLS
 
 #### SSL握手
 <br/>
-<img src="~@blogImages/m1.jpeg" width="600" style="display: block;"/>
+<img src="./assets/m1.jpeg" width="600" style="display: block;"/>
 <br/>
 
 #### 如何保证服务器发送的公钥不被篡改？

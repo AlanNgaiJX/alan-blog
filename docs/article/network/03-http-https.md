@@ -20,7 +20,7 @@ sidebarDepth: 2
 #### 请求报文
 HTTP协议，规定发送请求时，请求报文遵循以下格式：
 
-<img src="~@blogImages/l1.jpeg" width="400" style="display: block;"/>
+<img src="./assets/l1.jpeg" width="400" style="display: block;"/>
 <br/>
 
 * 请求行，即对应Gneral中的部分属性
@@ -30,7 +30,7 @@ HTTP协议，规定发送请求时，请求报文遵循以下格式：
 #### 响应报文
 
 HTTP协议，规定返回响应时，响应报文遵循以下格式：
-<img src="~@blogImages/l2.jpeg" width="400" style="display: block;"/>
+<img src="./assets/l2.jpeg" width="400" style="display: block;"/>
 <br/>
 
 * 响应行，即对应Gneral中的部分属性
@@ -127,7 +127,7 @@ HTTP协议，规定返回响应时，响应报文遵循以下格式：
 
 #### 图示多工机制
 <br/>
-<img src="~@blogImages/l3.jpeg" width="600" style="display: block;"/>
+<img src="./assets/l3.jpeg" width="600" style="display: block;"/>
 <br/>
 
 ## HTTPS

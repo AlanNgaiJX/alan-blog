@@ -11,7 +11,7 @@ sidebarDepth: 2
 
 采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称"项目"。
 
-<img src="~@blogImages/c1.jpeg" width="550px" style="display: block;"/>
+<img src="./assets/c1.jpeg" width="550px" style="display: block;"/>
 
 容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end。
 Flex项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。
@@ -38,7 +38,7 @@ flex-direction属性决定主轴的方向（即项目的排列方向）。
 * column-reverse 表示从下向上排列
 
 演示：
-<img src="~@blogImages/c2.jpeg" width="550px" style="display: block;"/>
+<img src="./assets/c2.jpeg" width="550px" style="display: block;"/>
 
 
 ### flex-wrap
@@ -57,7 +57,7 @@ flex-direction属性决定主轴的方向（即项目的排列方向）。
 
 
 演示：
-<img src="~@blogImages/c3.jpeg" width="550px" style="display: block;"/>
+<img src="./assets/c3.jpeg" width="550px" style="display: block;"/>
 
 ### flex-flow
 flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap
@@ -86,7 +86,7 @@ justify-content属性定义了项目在主轴上的对齐方式及额外空间�
 
 
 演示：
-<img src="~@blogImages/c4.jpeg" width="550px" style="display: block;"/>
+<img src="./assets/c4.jpeg" width="550px" style="display: block;"/>
 
 ### align-items
 align-items属性定义项目在交叉轴上的对齐方式。
@@ -104,7 +104,7 @@ align-items属性定义项目在交叉轴上的对齐方式。
 * baseline：交叉轴方向按第一行文字基线对齐
 
 演示：
-<img src="~@blogImages/c5.jpeg" width="550px" style="display: block;"/>
+<img src="./assets/c5.jpeg" width="550px" style="display: block;"/>
 
 ### align-content
 
@@ -124,7 +124,7 @@ align-content属性定义了在交叉轴方向的对齐方式及额外空间分�
 * space-around：项目均匀分布，每一个项目两侧有相同的留白空间，相邻项目之间的距离是两个项目之间留白的和
 
 演示：
-<img src="~@blogImages/c6.jpeg" width="550px" style="display: block;"/>
+<img src="./assets/c6.jpeg" width="550px" style="display: block;"/>
 
 ## flex项目属性
 
@@ -140,7 +140,7 @@ align-content属性定义了在交叉轴方向的对齐方式及额外空间分�
 按order值从小到大顺序排列，可以为负值，缺省为0。
 
 演示：
-<img src="~@blogImages/c7.jpeg" width="550px" style="display: block;"/>
+<img src="./assets/c7.jpeg" width="550px" style="display: block;"/>
 
 ### flex-grow
 
@@ -154,7 +154,7 @@ flex-grow属性定义项目的放大比例，flex-grow 值是一个单位的正�
 ```
 
 演示：
-<img src="~@blogImages/c8.jpeg" width="550px" style="display: block;"/>
+<img src="./assets/c8.jpeg" width="550px" style="display: block;"/>
 
 ### flex-shrink
 
@@ -167,7 +167,7 @@ flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间�
 ```
 
 演示：
-<img src="~@blogImages/c9.jpeg" width="550px" style="display: block;"/>
+<img src="./assets/c9.jpeg" width="550px" style="display: block;"/>
 
 ### flex-basis
 
@@ -180,7 +180,7 @@ flex-basis属性定义项目在分配额外空间之前的缺省尺寸。属性�
 ```
 
 演示：
-<img src="~@blogImages/c10.jpeg" width="550px" style="display: block;"/>
+<img src="./assets/c10.jpeg" width="550px" style="display: block;"/>
 
 ### flex
 flex属性是flex-grow, flex-shrink 和flex-basis的简写，默认值为0 1 auto。后两个是可选属性。
@@ -205,4 +205,4 @@ align-self属性定义项目的对齐方式，可覆盖align-items属性。默�
 除了auto值以外，align-self属性与容器的align-items属性基本一致。
 
 演示：
-<img src="~@blogImages/c11.jpeg" width="550px" style="display: block;"/>
+<img src="./assets/c11.jpeg" width="550px" style="display: block;"/>

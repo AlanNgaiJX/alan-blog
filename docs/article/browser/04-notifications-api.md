@@ -10,7 +10,7 @@
 * chrome ff safari对接口有较好的兼容性
 * 移动端浏览器都不支持该接口
 * 注意：该接口仅在Https下才被支持
-<img src="~@blogImages/e1.jpeg" width="600" style="display: block;"/>
+<img src="./assets/e1.jpeg" width="600" style="display: block;"/>
 
 
 #### 桌面通知流程

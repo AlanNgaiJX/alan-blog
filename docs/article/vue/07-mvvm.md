@@ -12,7 +12,7 @@ sidebarDepth: 2
 
 ## 结构
 
-<img src="~@blogImages/h1.jpeg" width="600" style="display: block;"/>
+<img src="./assets/h1.jpeg" width="600" style="display: block;"/>
 
 2. Model，即数据仓库，在vue中对应data。
 3. View，即页面视图，在vue中对应Dom。

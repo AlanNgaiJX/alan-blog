@@ -68,8 +68,7 @@ console.log(Object.getPrototypeOf(p));// Person
 
 （例一）
 <img src="./assets/a1.jpeg" width="400" style="display: block;"/>
-<img src="~@blogImages/a2.jpeg" width="300" style="display: block;"/>
-测试
+<img src="./assets/a2.jpeg" width="300" style="display: block;"/>
 * * *
 
 ### 隐式原型链
@@ -84,7 +83,7 @@ console.log(Object.getPrototypeOf(p));// Person
 * 体现了继承关系
 
 （例二）
-<img src="~@blogImages/a3.jpeg" width="600" style="display: block;"/>
+<img src="./assets/a3.jpeg" width="600" style="display: block;"/>
 
 
 * * *
@@ -124,7 +123,7 @@ sub.showSubProp(); // Sub property
 ```
 
 如图
-<img src="~@blogImages/a4.jpeg" width="600" style="display: block;"/>
+<img src="./assets/a4.jpeg" width="600" style="display: block;"/>
 
 
 #### 构造函数继承
@@ -180,7 +179,7 @@ console.log(s.getData());
 ```
 * * *
 ### 谨记原型链（构造函数，实例对象，原型对象三者的关系）
-<img src="~@blogImages/a5.jpeg" width="500" style="display: block;"/>
+<img src="./assets/a5.jpeg" width="500" style="display: block;"/>
 
 
 

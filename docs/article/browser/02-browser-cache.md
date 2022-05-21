@@ -27,7 +27,7 @@ sidebarDepth: 2
 第一次请求资源时返回的响应头中表述了该资源将遵循的缓存策略。具体过程为：
 
 
-<img src="~@blogImages/j1.png" width="600" style="display: block;"/>
+<img src="./assets/j1.png" width="600" style="display: block;"/>
 <br/>
 
 

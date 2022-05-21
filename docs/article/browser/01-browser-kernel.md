@@ -33,7 +33,7 @@ sidebarDepth: 2
 
 
 ## 浏览器的渲染过程
-<img src="~@blogImages/d1.jpeg" width="600" style="display: block;"/>
+<img src="./assets/d1.jpeg" width="600" style="display: block;"/>
 
 1. 解析HTML，生成DOM树，解析CSS，生成CSSOM树
 将DOM树和CSSOM树结合，生成渲染树(Render Tree)（在此过程中，外部依赖的JS和CSS有可能会阻塞DOM的解析，后面有总结）（在解析期间如果遇到script标签，会阻塞DOM树的生成，立即下载并执行script，如果这个script标签前还有css，script的执行需要等待CSS下载并解析完成后才会执行）
@@ -75,7 +75,7 @@ sidebarDepth: 2
 
 * * *
 ## 关于JS和CSS阻塞浏览器渲染的总结
-<img src="~@blogImages/d2.jpeg" width="600" style="display: block;"/>
+<img src="./assets/d2.jpeg" width="600" style="display: block;"/>
 
 ### 规律
 * 在文档解析的过程中，遇到外链js时会阻塞DOM的解析，下载并执行脚本后再继续DOM的解析；
@@ -140,7 +140,7 @@ video: 视频文件。
 
 
 ## 浏览器的事件处理机制（事件循环）
-<img src="~@blogImages/d3.jpeg" width="600" style="display: block;"/>
+<img src="./assets/d3.jpeg" width="600" style="display: block;"/>
 
 * 首先，主线程初始化代码，进行事件绑定，包括DOM事件绑定，计时器绑定，发送ajax请求等
 * 然后，分线程监听事件，触发事件后把回调放入队列
