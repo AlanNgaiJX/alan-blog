@@ -6,7 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: /alan-blog/docs/.vuepress/sidebar/index.js
  */
-const articleSidebar = require('./article-sidebar/index');
+const articleSidebar = require('./article-sidebar');
 const porjectSidebar = require('./project-sidebar');
 
 module.exports = {
