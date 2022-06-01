@@ -2,6 +2,7 @@
 title: 聚合
 sidebarDepth: 2
 ---
+
 ## 聚合
 
 聚合操作处理数据记录和 return 计算结果。
@@ -10,9 +11,9 @@ sidebarDepth: 2
 
 ## 三种聚合方式
 
-* 聚合管道
-* map-reduce-function
-* 单一目的的聚合方法
+- 聚合管道
+- map-reduce-function
+- 单一目的的聚合方法
 
 ## 聚合管道
 
@@ -27,20 +28,19 @@ db.orders.aggregate([
 ])
 ```
 
- **第一阶段** ：[`$match`](/aggregation/aggregation-pipeline)阶段按 `status`字段过滤文档，并将 `status`等于 `"A"`的文档传递到下一阶段。
+**第一阶段** ：[`$match`](/aggregation/aggregation-pipeline)阶段按 `status`字段过滤文档，并将 `status`等于 `"A"`的文档传递到下一阶段。
 
- **第二阶段** ：[`$group`](/aggregation/aggregation-pipeline)阶段按 `cust_id`字段将文档分组，以计算每个 `cust_id`唯一值的金额总和。
+**第二阶段** ：[`$group`](/aggregation/aggregation-pipeline)阶段按 `cust_id`字段将文档分组，以计算每个 `cust_id`唯一值的金额总和。
 
 ## 管道阶段
 
 ### match
 
-跟find的第一参数一样
-
+跟 find 的第一参数一样
 
 ### addFields
 
-向文档添加新字段。类似于project，set是addFields的别名。
+向文档添加新字段。类似于 project，set 是 addFields 的别名。
 
 ```
 {
@@ -140,42 +140,42 @@ db.scores.aggregate(
 输出文档只包含标识符字段和累积字段(如果指定的话)。
 
 ```
-{ 
-    "_id" : ObjectId("6288a9f57ad413fb1d855e8b"), 
-    "age" : 23.0, 
-    "type" : 0.0, 
-    "name" : "alex", 
+{
+    "_id" : ObjectId("6288a9f57ad413fb1d855e8b"),
+    "age" : 23.0,
+    "type" : 0.0,
+    "name" : "alex",
     "purse" : [
-        5.0, 
-        10.0, 
-        20.0, 
+        5.0,
+        10.0,
+        20.0,
         100.0
     ]
 }
-{ 
-    "_id" : ObjectId("6288aa0d7ad413fb1d855e8c"), 
-    "name" : "alan", 
-    "age" : 24.0, 
+{
+    "_id" : ObjectId("6288aa0d7ad413fb1d855e8c"),
+    "name" : "alan",
+    "age" : 24.0,
     "books" : [
-        "java", 
-        "php", 
+        "java",
+        "php",
         "javascript"
-    ], 
-    "type" : 0.0, 
+    ],
+    "type" : 0.0,
     "purse" : [
-        5.0, 
-        10.0, 
+        5.0,
+        10.0,
         20.0
     ]
 }
-{ 
-    "_id" : ObjectId("6288b271653dc90af756a29e"), 
-    "name" : "alice", 
-    "age" : 25.0, 
-    "type" : 1.0, 
+{
+    "_id" : ObjectId("6288b271653dc90af756a29e"),
+    "name" : "alice",
+    "age" : 25.0,
+    "type" : 1.0,
     "purse" : [
-        5.0, 
-        10.0, 
+        5.0,
+        10.0,
         20.0
     ]
 }
@@ -187,16 +187,16 @@ db.students.aggregate([{$group: { _id: "$type"}}])
 ```
 
 ```
-{ 
+{
     "_id" : 1.0
 }
-{ 
+{
     "_id" : 0.0
 }
 
 ```
 
-#### group可用的操作符
+#### group 可用的操作符
 
 #### push
 
@@ -285,12 +285,12 @@ db.students.aggregate([{$group: { _id: "$type" , sumAge: {$sum: "$age"}}}])
 ```
 
 ```
-{ 
-    "_id" : 1.0, 
+{
+    "_id" : 1.0,
     "sumAge" : 25.0
 }
-{ 
-    "_id" : 0.0, 
+{
+    "_id" : 0.0,
     "sumAge" : 47.0
 }
 
@@ -303,12 +303,12 @@ db.students.aggregate([{$group: { _id: "$type" , avgAge: {$avg: "$age"}}}])
 ```
 
 ```
-{ 
-    "_id" : 0.0, 
+{
+    "_id" : 0.0,
     "avgAge" : 23.5
 }
-{ 
-    "_id" : 1.0, 
+{
+    "_id" : 1.0,
     "avgAge" : 25.0
 }
 
@@ -513,7 +513,7 @@ db.sales.aggregate( [
 
 ### limit
 
-返回前5条文档给下个管道，一般配合sort使用
+返回前 5 条文档给下个管道，一般配合 sort 使用
 
 ```
 db.article.aggregate([
@@ -557,7 +557,6 @@ db.inventory.aggregate( [ { $unwind : "$sizes" } ] )
 { "_id" : 1, "item" : "ABC1", "sizes" : "L" }
 ```
 
-
 ### project
 
 文档种保留指定的列送给下一个管道，0 隐藏 | 1 保留。
@@ -579,7 +578,6 @@ db.books.aggregate( [ { $project : { title : 1 , author : 1 } } ] )
 ```
 { "_id" : 1, "title" : "abc123", "author" : { "last" : "zzz", "first" : "aaa" } }
 ```
-
 
 ### lookup
 
@@ -775,30 +773,30 @@ db.orders.aggregate( [
 ```
 
 ```
-{ 
-    "_id" : 1.0, 
-    "item" : "almonds", 
-    "price" : 12.0, 
-    "quantity" : 2.0, 
+{
+    "_id" : 1.0,
+    "item" : "almonds",
+    "price" : 12.0,
+    "quantity" : 2.0,
     "fromItems" : [
         {
-            "_id" : 1.0, 
-            "item" : "almonds", 
-            "description" : "almond clusters", 
+            "_id" : 1.0,
+            "item" : "almonds",
+            "description" : "almond clusters",
             "instock" : 120.0
         }
     ]
 }
-{ 
-    "_id" : 2.0, 
-    "item" : "pecans", 
-    "price" : 20.0, 
-    "quantity" : 1.0, 
+{
+    "_id" : 2.0,
+    "item" : "pecans",
+    "price" : 20.0,
+    "quantity" : 1.0,
     "fromItems" : [
         {
-            "_id" : 3.0, 
-            "item" : "pecans", 
-            "description" : "candied pecans", 
+            "_id" : 3.0,
+            "item" : "pecans",
+            "description" : "candied pecans",
             "instock" : 60.0
         }
     ]
@@ -806,7 +804,7 @@ db.orders.aggregate( [
 
 ```
 
-阶段二：取fromItems数组中的第一个，与该文档合并
+阶段二：取 fromItems 数组中的第一个，与该文档合并
 
 ```
 db.orders.aggregate( [
@@ -825,34 +823,34 @@ db.orders.aggregate( [
 ```
 
 ```
-{ 
-    "_id" : 1.0, 
-    "item" : "almonds", 
-    "description" : "almond clusters", 
-    "instock" : 120.0, 
-    "price" : 12.0, 
-    "quantity" : 2.0, 
+{
+    "_id" : 1.0,
+    "item" : "almonds",
+    "description" : "almond clusters",
+    "instock" : 120.0,
+    "price" : 12.0,
+    "quantity" : 2.0,
     "fromItems" : [
         {
-            "_id" : 1.0, 
-            "item" : "almonds", 
-            "description" : "almond clusters", 
+            "_id" : 1.0,
+            "item" : "almonds",
+            "description" : "almond clusters",
             "instock" : 120.0
         }
     ]
 }
-{ 
-    "_id" : 2.0, 
-    "item" : "pecans", 
-    "description" : "candied pecans", 
-    "instock" : 60.0, 
-    "price" : 20.0, 
-    "quantity" : 1.0, 
+{
+    "_id" : 2.0,
+    "item" : "pecans",
+    "description" : "candied pecans",
+    "instock" : 60.0,
+    "price" : 20.0,
+    "quantity" : 1.0,
     "fromItems" : [
         {
-            "_id" : 3.0, 
-            "item" : "pecans", 
-            "description" : "candied pecans", 
+            "_id" : 3.0,
+            "item" : "pecans",
+            "description" : "candied pecans",
             "instock" : 60.0
         }
     ]
@@ -860,7 +858,7 @@ db.orders.aggregate( [
 
 ```
 
-阶段三：隐藏 fromItems数组
+阶段三：隐藏 fromItems 数组
 
 ```
 db.orders.aggregate( [
@@ -880,20 +878,20 @@ db.orders.aggregate( [
 ```
 
 ```
-{ 
-    "_id" : 1.0, 
-    "item" : "almonds", 
-    "description" : "almond clusters", 
-    "instock" : 120.0, 
-    "price" : 12.0, 
+{
+    "_id" : 1.0,
+    "item" : "almonds",
+    "description" : "almond clusters",
+    "instock" : 120.0,
+    "price" : 12.0,
     "quantity" : 2.0
 }
-{ 
-    "_id" : 2.0, 
-    "item" : "pecans", 
-    "description" : "candied pecans", 
-    "instock" : 60.0, 
-    "price" : 20.0, 
+{
+    "_id" : 2.0,
+    "item" : "pecans",
+    "description" : "candied pecans",
+    "instock" : 60.0,
+    "price" : 20.0,
     "quantity" : 1.0
 }
 
@@ -972,10 +970,9 @@ db.orders.aggregate( [
 }
 ```
 
-
 #### 例五
 
-使用 $lookup 执行不相关子查询（两个表没关系的，只是想把一个表上的内容增量到另一个表上）
+使用 \$lookup 执行不相关子查询（两个表没关系的，只是想把一个表上的内容增量到另一个表上）
 
 ```
 db.absences.insertMany( [
@@ -1040,7 +1037,6 @@ db.absences.aggregate( [
 }
 ```
 
-
 ### replaceRoot
 
 ```
@@ -1102,7 +1098,6 @@ db.people.aggregate( [
 { "dogs" : 0, "cats" : 1, "birds" : 0, "fish" : 3 }
 { "dogs" : 0, "cats" : 0, "birds" : 0, "fish" : 0 }
 ```
-
 
 #### 例二
 
@@ -1173,7 +1168,6 @@ db.contacts.aggregate( [
 { "full_name" : "Peter Sumner" }
 ```
 
-
 #### 例四
 
 补全缺省字段，形成新文档
@@ -1227,4 +1221,251 @@ db.contacts.aggregate( [
   cell: '',
   home: '987-654-3210'
 }
+```
+
+## 案例库
+
+### 案例一
+
+统计文档中某字段的数组长度大于 0 的所有文档数。
+
+```javascript
+db.getCollection("users").aggregate([
+  {
+    $project: {
+      countRecipeCollect: {
+        $size: "$recipe_collect",
+      },
+    },
+  },
+  {
+    $match: {
+      countRecipeCollect: { $gt: 0 },
+    },
+  },
+  {
+    $count: "countActiveUser",
+  },
+]);
+```
+
+### 案例二
+
+统计文档中某字段的数组长度的最大值
+
+```javascript
+db.getCollection("users").aggregate([
+  {
+    $project: {
+      countRecipeCollect: {
+        $size: "$recipe_collect",
+      },
+    },
+  },
+  {
+    $sort: {
+      countRecipeCollect: -1,
+    },
+  },
+  { $limit: 1 },
+  { $project: { maxRecipeCollect: "$countRecipeCollect", _id: 0 } },
+]);
+```
+
+### 案例三
+
+提取文档中某字段的数组
+
+```javascript
+db.getCollection("users").aggregate([
+  {
+    $match: { _id: ObjectId("628477737938ae3c2f89d157") },
+  },
+  {
+    $unwind: "$recipe_collect",
+  },
+  {
+    $replaceRoot: {
+      newRoot: "$recipe_collect",
+    },
+  },
+]);
+```
+
+### 案例四
+
+在案例三的基础上进行连表查询，获得 recipe_list
+
+```javascript
+db.getCollection("users").aggregate([
+  {
+    $match: { _id: ObjectId("628477737938ae3c2f89d157") },
+  },
+  {
+    $unwind: "$recipe_collect",
+  },
+  {
+    $replaceRoot: {
+      newRoot: "$recipe_collect",
+    },
+  },
+  {
+    $lookup: {
+      from: "recipes",
+      localField: "recipe",
+      foreignField: "_id",
+      as: "recipeDetail",
+    },
+  },
+  {
+    $replaceRoot: {
+      newRoot: { $mergeObjects: [{ $arrayElemAt: ["$recipeDetail", 0] }] },
+    },
+  },
+]);
+```
+
+### 案例五
+
+在案例四的基础上进行分页查询
+
+```javascript
+db.getCollection("users").aggregate([
+  {
+    $match: { _id: ObjectId("628477737938ae3c2f89d157") },
+  },
+  {
+    $unwind: "$recipe_collect",
+  },
+  {
+    $replaceRoot: {
+      newRoot: "$recipe_collect",
+    },
+  },
+  {
+    $lookup: {
+      from: "recipes",
+      localField: "recipe",
+      foreignField: "_id",
+      as: "recipeDetail",
+    },
+  },
+  {
+    $replaceRoot: {
+      newRoot: { $mergeObjects: [{ $arrayElemAt: ["$recipeDetail", 0] }] },
+    },
+  },
+  { $skip: 0 },
+  {
+    $limit: 10,
+  },
+]);
+```
+
+### 案例六
+
+完整的复杂聚合查询，包括 lookup 后字段的筛选，字段名更改等操作
+
+```javascript
+db.getCollection("users").aggregate([
+  {
+    $match: { token },
+  },
+  {
+    $unwind: "$recipe_collect",
+  },
+  {
+    $replaceRoot: {
+      newRoot: "$recipe_collect",
+    },
+  },
+  {
+    $lookup: {
+      from: "recipes",
+      localField: "recipe",
+      foreignField: "_id",
+      as: "recipeDetail",
+    },
+  },
+  {
+    $set: {
+      collect_id: "$_id",
+      is_collect: true,
+    },
+  },
+  {
+    $project: {
+      _id: 0,
+    },
+  },
+  {
+    $replaceRoot: {
+      newRoot: {
+        $mergeObjects: [{ $arrayElemAt: ["$recipeDetail", 0] }, "$$ROOT"],
+      },
+    },
+  },
+  {
+    $lookup: {
+      from: "filmSimulationTags",
+      localField: "film_simulation_tag",
+      foreignField: "_id",
+      as: "film_simulation_tag",
+    },
+  },
+  {
+    $set: {
+      film_simulation_tag: {
+        $map: {
+          input: "$film_simulation_tag",
+          in: {
+            _id: "$$this._id",
+            name: "$$this.name",
+            alias: "$$this.alias",
+          },
+        },
+      },
+    },
+  },
+  { $unwind: "$film_simulation_tag" },
+  {
+    $lookup: {
+      from: "styleTags",
+      localField: "style_tags",
+      foreignField: "_id",
+      as: "style_tags",
+    },
+  },
+  {
+    $set: {
+      style_tags: {
+        $map: {
+          input: "$style_tags",
+          in: {
+            _id: "$$this._id",
+            name: "$$this.name",
+            alias: "$$this.alias",
+          },
+        },
+      },
+    },
+  },
+  {
+    $project: {
+      coating_array: 1,
+      film_simulation_tag: 1,
+      name: 1,
+      style_tags: 1,
+      thumb_image: 1,
+      recipe_id: 1,
+      remark: 1,
+      is_collect: 1,
+      collect_id: 1,
+    },
+  },
+  { $skip: (page - 1) * size },
+  {
+    $limit: size,
+  },
+]);
 ```
